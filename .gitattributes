@@ -1,0 +1,21 @@
+# Keep Godot text resources stable across platforms.
+*.gd text eol=lf
+*.tscn text eol=lf
+*.tres text eol=lf
+*.godot text eol=lf
+*.import text eol=lf
+*.uid text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# Binary assets
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ogg binary
+*.wav binary
+*.mp3 binary

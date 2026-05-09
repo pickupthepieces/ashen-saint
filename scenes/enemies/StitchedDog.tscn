@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ashen_saint_stitched_dog"]
+
+[ext_resource type="Script" path="res://src/enemies/EnemyBase.gd" id="1_enemy_base"]
+[ext_resource type="Texture2D" path="res://assets/art/enemies/greyed-villager-idle.png" id="2_greyed_villager_idle"]
+[ext_resource type="PackedScene" path="res://scenes/loot/LootPickup.tscn" id="3_loot_pickup"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stitched_dog"]
+size = Vector2(48, 30)
+
+[node name="StitchedDog" type="CharacterBody2D"]
+script = ExtResource("1_enemy_base")
+patrol_speed = 118.0
+loot_scene = ExtResource("3_loot_pickup")
+max_hp = 32.0
+base_attack = 9.0
+contact_damage = 9.0
+aggro_range = 680.0
+preferred_distance = 18.0
+
+[node name="VisualSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -34)
+scale = Vector2(0.42, 0.28)
+modulate = Color(0.46, 0.43, 0.37, 1)
+texture = ExtResource("2_greyed_villager_idle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_stitched_dog")

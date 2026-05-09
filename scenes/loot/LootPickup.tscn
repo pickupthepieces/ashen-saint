@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://ashen_saint_loot_pickup"]
+
+[ext_resource type="Script" path="res://src/loot/LootPickup.gd" id="1_loot_pickup"]
+[ext_resource type="Texture2D" path="res://assets/art/items/old-judgement-sword.png" id="2_old_judgement_sword"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
+radius = 28.0
+
+[node name="LootPickup" type="Area2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_loot_pickup")
+display_name = "旧裁决剑"
+rarity = "rare"
+slot = "two_hand_sword"
+weapon_attack = 26.0
+icon_texture = ExtResource("2_old_judgement_sword")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_old_judgement_sword")
+
+[node name="PromptLabel" type="Label" parent="."]
+visible = false
+offset_left = -34.0
+offset_top = -56.0
+offset_right = 70.0
+offset_bottom = -28.0
+theme_override_colors/font_color = Color(0.86, 0.82, 0.72, 1)
+text = "F 拾取"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pickup")

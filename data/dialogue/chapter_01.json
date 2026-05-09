@@ -1,0 +1,38 @@
+{
+  "ash_pit_start": [
+    {"speaker": "", "text": "雨水落进灰里，露出一只还在动的手。"},
+    {"speaker": "洛温", "text": "我还在这里。"}
+  ],
+  "old_wheat_road_start": [
+    {"speaker": "", "text": "路牌被白灰盖住，只剩下“烂骨村”几个字。"},
+    {"speaker": "洛温", "text": "名单从这里开始。"}
+  ],
+  "rottenbone_village_start": [
+    {"speaker": "", "text": "屋门关着，祈祷声却从每一面墙里传出来。"},
+    {"speaker": "洛温", "text": "这些人不是在活着。"}
+  ],
+  "mira_rescued": [
+    {"speaker": "米拉", "text": "别靠近灯。它们会听见你还活着。"},
+    {"speaker": "洛温", "text": "村里还有别人吗？"},
+    {"speaker": "米拉", "text": "有。每晚都有。可他们醒来的时候，已经不是人了。"}
+  ],
+  "boss_before": [
+    {"speaker": "赫尔曼", "text": "名单不能少。少一个，圣堂就不会放过我们。"},
+    {"speaker": "米拉", "text": "他把我们的名字交出去，又把我们一个个喊回来。"},
+    {"speaker": "洛温", "text": "赦免不是这样来的。"},
+    {"speaker": "赫尔曼", "text": "骑士，你比我更懂这个词吗？"}
+  ],
+  "boss_after": [
+    {"speaker": "赫尔曼", "text": "名单齐了么？"},
+    {"speaker": "米拉", "text": "不用再点了。"},
+    {"speaker": "洛温", "text": "他们可以走了。"}
+  ],
+  "old_camp_start": [
+    {"speaker": "米拉", "text": "他们没有回来。只是留下了一点声音。"},
+    {"speaker": "米拉", "text": "如果你还要进去，别把那些声音当成人。"}
+  ],
+  "echo_realm_start": [
+    {"speaker": "", "text": "裂口里响着烂骨村的残声。"},
+    {"speaker": "洛温", "text": "我会把它们清干净。"}
+  ]
+}

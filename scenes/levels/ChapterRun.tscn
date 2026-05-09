@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://ashen_saint_chapter_run"]
+
+[ext_resource type="Script" path="res://src/levels/ChapterFlow.gd" id="1_chapter_flow"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="3_hud"]
+[ext_resource type="PackedScene" path="res://scenes/ui/DialogueBox.tscn" id="4_dialogue_box"]
+
+[sub_resource type="RectangleShape2D" id="GroundShape"]
+size = Vector2(1600, 70)
+
+[sub_resource type="RectangleShape2D" id="LowLedgeShape"]
+size = Vector2(230, 28)
+
+[sub_resource type="RectangleShape2D" id="ExitShape"]
+size = Vector2(92, 220)
+
+[node name="ChapterRun" type="Node2D"]
+script = ExtResource("1_chapter_flow")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(640, 330)
+scale = Vector2(1.58, 1.58)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(640, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("GroundShape")
+
+[node name="GroundVisual" type="Polygon2D" parent="Ground"]
+color = Color(0.20, 0.18, 0.16, 0.88)
+polygon = PackedVector2Array(-800, -35, 800, -35, 800, 35, -800, 35)
+
+[node name="LowLedge" type="StaticBody2D" parent="."]
+position = Vector2(900, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowLedge"]
+shape = SubResource("LowLedgeShape")
+
+[node name="LedgeVisual" type="Polygon2D" parent="LowLedge"]
+color = Color(0.25, 0.23, 0.20, 0.82)
+polygon = PackedVector2Array(-115, -14, 115, -14, 115, 14, -115, 14)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(150, 615)
+
+[node name="EnemyLayer" type="Node2D" parent="."]
+
+[node name="NPCLayer" type="Node2D" parent="."]
+
+[node name="ExitArea" type="Area2D" parent="."]
+position = Vector2(1210, 545)
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+shape = SubResource("ExitShape")
+
+[node name="ExitLabel" type="Label" parent="ExitArea"]
+visible = false
+offset_left = -96.0
+offset_top = -130.0
+offset_right = 130.0
+offset_bottom = -98.0
+theme_override_colors/font_color = Color(0.86, 0.82, 0.72, 1)
+text = "F 前进"
+
+[node name="ObjectiveLayer" type="CanvasLayer" parent="."]
+
+[node name="ObjectiveLabel" type="Label" parent="ObjectiveLayer"]
+offset_left = 18.0
+offset_top = 82.0
+offset_right = 760.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.78, 0.72, 0.62, 1)
+
+[node name="HUD" parent="." instance=ExtResource("3_hud")]
+player_path = NodePath("../Player")
+
+[node name="DialogueBox" parent="." instance=ExtResource("4_dialogue_box")]

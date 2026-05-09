@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://ashen_saint_player"]
+
+[ext_resource type="Script" path="res://src/player/PlayerController.gd" id="1_player_controller"]
+[ext_resource type="Texture2D" path="res://assets/art/characters/lowen-idle.png" id="2_lowen_idle"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(34, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_attack"]
+size = Vector2(76, 46)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_player_controller")
+
+[node name="VisualSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -49)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_lowen_idle")
+
+[node name="Body" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.32, 0.31, 0.29, 1)
+polygon = PackedVector2Array(-17, -52, 17, -52, 15, 5, -15, 5)
+
+[node name="ChestWound" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.75, 0.14, 0.08, 1)
+polygon = PackedVector2Array(-3, -34, 4, -34, 2, -15, -2, -15)
+
+[node name="Greatsword" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(28, -24)
+rotation = 0.45
+color = Color(0.48, 0.47, 0.43, 1)
+polygon = PackedVector2Array(-4, -58, 4, -58, 5, 22, -5, 22)
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(46, -26)
+
+[node name="AttackShape" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("RectangleShape2D_attack")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_player")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(120, -90)
+enabled = true
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0

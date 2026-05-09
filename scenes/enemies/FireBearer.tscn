@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ashen_saint_fire_bearer"]
+
+[ext_resource type="Script" path="res://src/enemies/EnemyBase.gd" id="1_enemy_base"]
+[ext_resource type="Texture2D" path="res://assets/art/enemies/fire-bearer-idle.png" id="2_fire_bearer_idle"]
+[ext_resource type="PackedScene" path="res://scenes/loot/LootPickup.tscn" id="3_loot_pickup"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fire_bearer"]
+size = Vector2(34, 52)
+
+[node name="FireBearer" type="CharacterBody2D"]
+script = ExtResource("1_enemy_base")
+patrol_speed = 16.0
+loot_scene = ExtResource("3_loot_pickup")
+
+[node name="VisualSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -45)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("2_fire_bearer_idle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_fire_bearer")

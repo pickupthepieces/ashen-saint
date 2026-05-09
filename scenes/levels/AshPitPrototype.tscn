@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://ashen_saint_ash_pit"]
+
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/GreyedVillager.tscn" id="2_greyed_villager"]
+[ext_resource type="Texture2D" path="res://assets/art/environments/ash-pit-bg.png" id="3_ash_pit_bg"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="4_hud"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(1600, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ledge"]
+size = Vector2(230, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_block"]
+size = Vector2(90, 120)
+
+[node name="AshPitPrototype" type="Node2D"]
+
+[node name="WorldTone" type="CanvasModulate" parent="."]
+color = Color(0.48, 0.45, 0.42, 1)
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(640, 330)
+scale = Vector2(1.58, 1.58)
+texture = ExtResource("3_ash_pit_bg")
+
+[node name="BackgroundAsh" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.12, 0.115, 0.11, 1)
+polygon = PackedVector2Array(-200, -120, 1700, -120, 1700, 720, -200, 720)
+
+[node name="DistantRidge" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.19, 0.18, 0.17, 1)
+polygon = PackedVector2Array(-100, 470, 120, 390, 280, 430, 470, 360, 720, 440, 930, 385, 1160, 455, 1460, 390, 1700, 470, 1700, 720, -100, 720)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(640, 650)
+
+[node name="GroundShape" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="GroundVisual" type="Polygon2D" parent="Ground"]
+color = Color(0.23, 0.215, 0.2, 1)
+polygon = PackedVector2Array(-800, -35, 800, -35, 800, 35, -800, 35)
+
+[node name="LowLedge" type="StaticBody2D" parent="."]
+position = Vector2(860, 540)
+
+[node name="LowLedgeShape" type="CollisionShape2D" parent="LowLedge"]
+shape = SubResource("RectangleShape2D_ledge")
+
+[node name="LowLedgeVisual" type="Polygon2D" parent="LowLedge"]
+color = Color(0.28, 0.265, 0.24, 1)
+polygon = PackedVector2Array(-115, -14, 115, -14, 115, 14, -115, 14)
+
+[node name="CollapsedMarker" type="StaticBody2D" parent="."]
+position = Vector2(1120, 560)
+
+[node name="CollapsedMarkerShape" type="CollisionShape2D" parent="CollapsedMarker"]
+shape = SubResource("RectangleShape2D_block")
+
+[node name="CollapsedMarkerVisual" type="Polygon2D" parent="CollapsedMarker"]
+color = Color(0.2, 0.19, 0.18, 1)
+polygon = PackedVector2Array(-45, -60, 45, -60, 45, 60, -45, 60)
+
+[node name="HalfBuriedGrave" type="Polygon2D" parent="."]
+position = Vector2(320, 592)
+rotation = -0.14
+color = Color(0.34, 0.33, 0.31, 1)
+polygon = PackedVector2Array(-16, -56, 16, -56, 19, 20, -20, 20)
+
+[node name="BurntBanner" type="Polygon2D" parent="."]
+position = Vector2(515, 570)
+color = Color(0.16, 0.15, 0.14, 1)
+polygon = PackedVector2Array(-5, -105, 5, -105, 5, 18, -5, 18)
+
+[node name="BannerCloth" type="Polygon2D" parent="BurntBanner"]
+position = Vector2(20, -84)
+color = Color(0.42, 0.40, 0.36, 1)
+polygon = PackedVector2Array(-16, -14, 42, -10, 28, 18, -16, 8)
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(150, 615)
+
+[node name="GreyedVillagerA" parent="." instance=ExtResource("2_greyed_villager")]
+position = Vector2(560, 612)
+
+[node name="GreyedVillagerB" parent="." instance=ExtResource("2_greyed_villager")]
+position = Vector2(760, 612)
+
+[node name="GreyedVillagerLedge" parent="." instance=ExtResource("2_greyed_villager")]
+position = Vector2(910, 522)
+
+[node name="HUD" parent="." instance=ExtResource("4_hud")]
+player_path = NodePath("../Player")

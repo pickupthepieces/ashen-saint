@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ashen_saint_main"]
+
+[ext_resource type="PackedScene" path="res://scenes/levels/ChapterRun.tscn" id="1_chapter_run"]
+
+[node name="Main" type="Node2D"]
+
+[node name="ChapterRun" parent="." instance=ExtResource("1_chapter_run")]

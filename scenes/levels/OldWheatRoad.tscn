@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ashen_saint_old_wheat_road"]
+
+[ext_resource type="Texture2D" path="res://assets/art/environments/old-wheat-road-bg.png" id="1_bg"]
+
+[sub_resource type="RectangleShape2D" id="GroundShape"]
+size = Vector2(1600, 70)
+
+[node name="OldWheatRoad" type="Node2D"]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+position = Vector2(640, 330)
+scale = Vector2(1.58, 1.58)
+texture = ExtResource("1_bg")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(640, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("GroundShape")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ashen_saint_hermann_boss"]
+
+[ext_resource type="Script" path="res://src/bosses/HermannBoss.gd" id="1_hermann_boss"]
+[ext_resource type="Texture2D" path="res://assets/art/bosses/hermann-idle.png" id="2_hermann_idle"]
+[ext_resource type="PackedScene" path="res://scenes/loot/LootPickup.tscn" id="3_loot_pickup"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hermann"]
+size = Vector2(110, 78)
+
+[node name="HermannBoss" type="CharacterBody2D"]
+script = ExtResource("1_hermann_boss")
+patrol_speed = 0.0
+loot_scene = ExtResource("3_loot_pickup")
+max_hp = 180.0
+base_attack = 14.0
+
+[node name="VisualSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -54)
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("2_hermann_idle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -35)
+shape = SubResource("RectangleShape2D_hermann")
