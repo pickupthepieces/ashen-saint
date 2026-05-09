@@ -1,6 +1,8 @@
 param(
     [Parameter(Position = 0)]
-    [string]$Message
+    [string]$Message,
+
+    [switch]$Yes
 )
 
 $ErrorActionPreference = "Stop"
@@ -25,6 +27,17 @@ $status = git status --porcelain
 if ([string]::IsNullOrWhiteSpace($status)) {
     Write-Host "No local changes to sync."
     exit 0
+}
+
+Write-Host "Changes to sync:"
+git status --short
+
+if (-not $Yes) {
+    $answer = Read-Host "Commit and push these changes? [y/N]"
+    if ($answer -notmatch "^(y|yes)$") {
+        Write-Host "Canceled."
+        exit 1
+    }
 }
 
 if ([string]::IsNullOrWhiteSpace($Message)) {
